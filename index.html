@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            width: 1000px;
+            height: 800px;
+            float: left;
+            display: flex;
+            flex-wrap: wrap;
+            background: pink;
+        }
+
+        .main-all{
+            width: 1000px;
+            height: 800px;
+            float: left;
+            display: flex;
+            flex-wrap: wrap;
+            display: none;
+        }
+
+        .main-popular {
+            width: 1000px;
+            height: 800px;
+            float: left;
+            display: flex;
+            flex-wrap: wrap;
+            display: none;
+        }
+
+        .main-newest {
+            width: 1000px;
+            height: 800px;
+            float: left;
+            display: flex;
+            flex-wrap: wrap;
+            display: none;
+        }
+        .product {
+            width: 200px;
+            height: 300px;
+            margin: 15px;
+            background: #999;
+            float: right;
+        }
+
+        .prod-pic {
+            width: 100px;
+            height: 100px;
+        }
+
+        .header {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background: #cc99ff;
+            opacity: 0.8;
+        }
+
+        .signIN {
+            padding: 5px;
+            width: 650px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ccccff;
+            border-top-left-radius: 9px;
+            border-bottom-left-radius: 9px;
+    }
+
+    .login-title {
+        color: #6699ff;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .login-input {
+        background: #e6e6ff;
+        width: 200px;
+        height: 30px;
+        border: none;
+        border-radius: 3px;
+        outline: none;
+        padding-left: 1px;
+    }
+
+    .title {
+        color: #777;
+        font-size: 15px;
+        margin-bottom: 3px;
+        margin-top: 10px;
+
+    }
+
+    .login-button {
+        width: 100px;
+        height: 40px;
+        margin-top: 10px;
+        color: #777;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        background: #cc99ff;
+        cursor: pointer;
+    }
+    .main{
+        background:  #ebd6ff;
+        /* display: flex;
+        justify-content: space-between; */
+        height: 800px;
+    }
+
+    .signUP {
+        text-align: center;
+        margin-top: 45px;
+        float: right;
+        width: 330px;
+        height: auto;
+        padding: 15px;
+        background:#c7cce1;
+        border-radius: 8px;
+    }
+ .logged {
+     width: 300px;
+     height: 30px;
+ }
+    
+.product-reg {
+    display: none;
+}
+
+.header__list {
+    list-style: none;
+    display: flex;
+    height: 100px;
+    width: 300px;
+    align-items: flex-end;
+    justify-content: space-between
+}
+
+.g-recaptcha {
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+
+    <div class="header">
+
+        <div class="logged"></div>
+         
+        <ul class="header__list">
+            <li class="header__list__item"><button class="login-button" id="popular">popular</button></li>
+            <li class="header__list__item"><button class="login-button" id="New-added">new added</button></li>
+            <li class="header__list__item"><button class="login-button" id="discount">Discount</button></li>
+        </ul>
+
+        <div class="signIN">
+    <h5 class="login-title">ავტორიზაცია</h5>
+
+   <div>
+        <p class="title">იმეილი </p>
+        <input class="login-input"type="text" placeholder="Email" id="login-email" >
+   </div>
+   <div>
+        <p class="title">პაროლი</p>
+        <input class="login-input" type="password" placeholder="Password" id="login-pass" >
+    </div>
+    <div>
+        <button class="login-button" id="login-button">შესვლა</button>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="hide"></div>
+
+
+    <div class="main">
+
+         <div class="main-container">
+           
+        </div>
+
+        <div class="main-all"></div>
+        <div class="main-popular"></div>
+        <div class="main-newest"></div>
+
+        <div class="signUP">
+        <!-- <h4 class="login-title">რეგისტრაცია</h4> -->
+
+        <div class="user">
+    <div>
+        <p class="title">მომხმარებლის სახელი </p>
+        <input class="login-input" type="text" id="reg-name">
+    </div>
+
+    <div>
+        <p class="title">ელექტრონული ფოსტა </p> 
+        <input class="login-input" type="text" id="reg-email">
+    </div>
+
+    <div>
+        <p class="title">პაროლი </p>
+        <input class="login-input" type="password" id="reg-password">
+    </div>
+
+    <div>
+        <input type="submit" class="login-button" id="reg-submit" value="რეგისტრაცია" name="submit">
+        <!-- <button class="login-button" id="reg-submit">რეგისტრაცია</button> -->
+    </div>
+    
+        <div class="g-recaptcha" data-sitekey="6LfZD5IUAAAAADa0WX91_W9SIKi6bUCzrqPpRBcH"  data-callback="verifyCaptcha"></div>
+        <div id="g-recaptcha-error"></div>
+     
+   
+
+</div>
+<hr>
+<div class="product-reg">
+        <div>
+            <p class="title">პროდუქტის დასახელება </p>
+            <input class="login-input" type="text" id="prod-name">
+        </div>
+        <div>
+            <p class="title">პროდუქტის მიმწოდებელი</p>
+            <input class="login-input" type="text" id="prod-supplier">
+        </div>
+        <div>
+            <p class="title">პროდუქტის ფოტო</p>
+            <input class="login-input" type="text" id="prod-pic">
+        </div>
+        <div>
+            <p class="title">პროდუქციის ერთეული</p>
+            <input class="login-input" type="text" id="prod-unit">
+        </div>
+        <div>
+            <p class="title">გასაყიდი ფასი</p>
+            <input class="login-input" type="text" id="prod-price">
+        </div>
+
+
+        <div>
+            <button class="login-button" id="prod-submit">დამატება</button>
+        </div>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+<script src="http://www.google.com/recaptcha/api.js"></script>
+
+
+
+    <script>
+        
+        var capt = document.querySelector(".submit1")
+   function submitUserForm(){
+        var response = grecaptcha.getResponse();
+        if(response.length==0) {
+            document.getElementById("g-recaptcha-error").innerHTML = '<span style="color:red;">This field is required!</span>'
+            console.log(response.length);
+        }
+        console.log(response.length)
+        return registration();
+    }
+
+    // capt.addEventListener("click", submitUserForm);
+
+    function verifyCaptcha() {
+        document.getElementById("g-recaptcha-error").innerHTML = "";
+    }
+
+        const name = document.querySelector('#reg-name');
+        const email = document.querySelector('#reg-email');
+        const password = document.querySelector('#reg-password');
+        const submit = document.querySelector('#reg-submit');
+
+        const logemail = document.querySelector("#login-email");
+        const logpass = document.querySelector("#login-pass");
+        const signinBtn = document.querySelector("#login-button");
+        const logged = document.querySelector(".logged");
+
+        const block = document.querySelector(".main-container");
+        const prodReg = document.querySelector(".product-reg");
+
+        const pname = document.querySelector("#prod-name");
+        const psupplier = document.querySelector('#prod-supplier');
+        const prodSub = document.querySelector("#prod-submit");
+
+     window.onload = () => {
+            fetch('http://localhost:4000/auth')
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                for(let i = 0; i<result.length; i++) {
+                    var prodBlock = document.createElement("div");
+                    var prodName = document.createElement("div");
+                    var prodSupplier =document.createElement("div");
+                    var prodImg = document.createElement("img"); 
+                    
+                  
+                    prodImg.src=result[i].photo;
+                    prodImg.className = "prod-pic";
+                    prodBlock.className = "product";
+                    
+                    prodBlock.appendChild(prodName);
+                    prodBlock.appendChild(prodSupplier);
+                    prodBlock.appendChild(prodImg);
+                    block.appendChild(prodBlock);
+
+                    prodName.innerHTML = result[i].name;  
+                    prodSupplier.innerHTML = result[i].supplier; 
+                }
+            })
+            .catch(err=>console.log(err))
+        }
+        
+
+
+        const file = document.querySelector("#prod-pic");
+
+        function registration(){
+            const data = {
+                name: name.value,
+                email: email.value,
+                password: password.value
+            }
+
+            fetch('http://localhost:4000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data) 
+            })
+            .then(res => res.json()) 
+            .then(result =>{
+                console.log(result)
+                if(result.user){
+                    alert(result.user.name)
+                }  else{
+                    alert(result.message)
+                }
+            })
+            .catch(err => console.log(err));
+        }
+
+        // submit.addEventListener("click", registration);
+        submit.addEventListener("click", ()=>{
+            // registration();
+            submitUserForm();
+        })
+        
+        // submit.addEventListener('click', () => {
+        //     const data = {
+        //         name: name.value,
+        //         email: email.value,
+        //         password: password.value
+        //     }
+
+        //     fetch('http://localhost:4000/users', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-type': 'application/json'
+        //         },
+        //         body: JSON.stringify(data) 
+        //     })
+        //     .then(res => res.json()) 
+        //     .then(result =>console.log(result))
+        //     .catch(err => console.log(err));
+        // });
+
+
+        signinBtn.addEventListener("click", ()=>{
+            const Logdata = {
+                email: logemail.value,
+                password: logpass.value
+            }
+
+            fetch('http://localhost:4000/auth', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(Logdata)
+            })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                if(result.decoded && result.decoded.email === logemail.value){
+                    logged.innerHTML = `შემოსულია მომხმარებელი: ${result.decoded.email}`
+                    block.style.display = "flex";
+                    prodReg.style.display = "block";
+                   
+                } else {
+                    alert(result)
+                }
+              
+                for(let i = 0; i<result.all.length; i++) {
+                    var prodBlock = document.createElement("div");
+                    var prodName = document.createElement("div");
+                    var prodSupplier =document.createElement("div");
+                    var prodImg = document.createElement("img"); 
+                    
+                  
+                    prodImg.src=result.all[i].photo;
+                    prodImg.className = "prod-pic";
+                    prodBlock.className = "product";
+                    
+                    prodBlock.appendChild(prodName);
+                    prodBlock.appendChild(prodSupplier);
+                    prodBlock.appendChild(prodImg);
+                    block.appendChild(prodBlock);
+
+                    prodName.innerHTML = result.all[i].name;  
+                    prodSupplier.innerHTML = result.all[i].supplier; 
+                }
+                
+                
+                logemail.value = "";
+                logpass.value = "";
+            })
+            .catch(err => console.log(err))
+
+        });
+
+       prodSub.addEventListener('click', () => {
+            const pdata = {
+                name: pname.value,
+                supplier: psupplier.value,
+                photo: file.value
+            }
+
+            fetch('http://localhost:4000/products', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(pdata) 
+            })
+            .then(res => res.json()) 
+            .then(result => {
+                console.log(result)
+                console.log(typeof result);
+                console.log(result.product);
+                console.log(result.all);
+                console.log(typeof file.value);
+               
+                var prodBlock = document.createElement("div");
+                var prodName = document.createElement("div");
+                var prodSupplier =document.createElement("div");
+                var prodImg = document.createElement("img");
+                
+                prodImg.src=file.value;
+                prodImg.className = "prod-pic";
+
+                prodBlock.className = "product";
+                prodBlock.appendChild(prodName);
+                prodBlock.appendChild(prodSupplier);
+                block.appendChild(prodBlock);
+                prodBlock.appendChild(prodImg);
+                prodName.innerHTML = result.product.name;
+                prodSupplier.innerHTML = result.product.supplier           })
+            .catch(err => console.log(err));
+        });
+        
+    </script>
+
+    
+</body>
+</html>
